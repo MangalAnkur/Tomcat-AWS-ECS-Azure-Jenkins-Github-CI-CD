@@ -1,0 +1,4 @@
+vim src/main/java/com/app/example/App.java
+mvn package
+cp target/hello-world-1.war /var/lib/tomcat9/webapps/
+systemctl restart tomcat
