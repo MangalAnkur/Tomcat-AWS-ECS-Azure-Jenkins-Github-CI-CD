@@ -1,11 +1,23 @@
     pipeline {
         agent any
         stages {
-            stage('Code Checkout'){
+            stage("Confirm ??"){
+                steps {
+                    input('Do you want to proceed?')
+                }
+            }
+            stage('Clean Worksapce'){
                 steps {
                     sh '''
                     #!/bin/bash
                     rm -rf test-java
+                    '''
+                }
+            }
+            stage('Code Checkout'){
+                steps {
+                    sh '''
+                    #!/bin/bash
                     git clone https://github.com/MangalAnkur/test-java.git
                     '''
                 }
