@@ -1,21 +1,36 @@
-pipeline {
-    stages {
-        stage('Approvel') {
-            def choice = input(message: 'Do you want to proceed?', ok: 'Yes', 
-                        parameters: [booleanParam(defaultValue: true, 
-                        description: 'Please push the button',name: 'Yes?')])
-        }
-        stage("Build War file"){
-            sh '''
-            #!/bin/bash
-            mvn package
-            '''
-        }
-        stage("Deployment"){
-            sh '''
-            #!/bin/bash
-            scp target/hello-world-1.war root@20.163.247.244:/var/lib/tomcat9/webapps/
-            '''
+    pipeline {
+        agent any
+        stages {
+            stage('Code Checkout'){
+                steps {
+                    sh '''
+                    #!/bin/bash
+                    rm -rf test-java
+                    git clone https://github.com/MangalAnkur/test-java.git
+                    '''
+                }
+            }
+            stage("Build War file"){
+                steps {
+                    dir("test-java"){
+                        sh '''
+                            #!/bin/bash
+                            ls
+                            pwd
+                            mvn package
+                            '''
+                    }
+                }
+            }
+            stage("Deployment"){
+                steps {
+                    dir("test-java"){
+                        sh '''
+                        #!/bin/bash
+                        scp target/hello-world-1.war root@20.163.247.244:/var/lib/tomcat9/webapps/
+                        '''
+                    } 
+                }
+            }
         }
     }
-}
