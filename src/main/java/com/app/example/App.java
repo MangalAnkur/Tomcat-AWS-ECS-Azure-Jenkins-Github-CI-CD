@@ -20,13 +20,6 @@ public class App extends SpringBootServletInitializer {
 
    @RequestMapping(value = "/")
    public String hello() {
-      return "<center>Hello Welcome to demo
-         test -2 02-01-2023
-         Scapi : c5.2xlarge 
-         CeleryWorkers: m5.xlarge 
-         CeleryBeat: t3.medium 
-         JetStream: c5.xlarge 
-         Pgbouncer: c5.2xlarge
-         </center>";
+      return "<center>Hello Welcome to demo</center>";
    }
 }
