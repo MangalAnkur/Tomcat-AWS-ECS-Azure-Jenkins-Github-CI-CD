@@ -26,4 +26,4 @@ steps:
   displayName: 'Publish Java Artifacts'
   inputs:
     ArtifactName: java-artifact
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+    PathtoPublish: '$(build.artifactstagingdirectory)/java'
