@@ -26,4 +26,4 @@ steps:
   displayName: 'Publish Java Artifacts'
   inputs:
     ArtifactName: java-artifact
-    PathtoPublish: '/var/lib/tomcat9/'
+    PathtoPublish: '$(build.artifactstagingdirectory)'
