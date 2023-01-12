@@ -22,8 +22,12 @@ steps:
     goals: 'package'
 
 
+- task: CopyFiles@2
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'  
+    
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Java Artifacts'
   inputs:
     ArtifactName: java-artifact
-    PathtoPublish: '$(build.artifactstagingdirectory)/java'
+    PathtoPublish: '$(build.artifactstagingdirectory)'
